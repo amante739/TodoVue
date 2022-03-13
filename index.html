@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todooey - A Simple Todo List App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1 class="">My Todo List</h1>
+        <div class="card">
+          <div class="flex">
+            <input v-model="newItem" placeholder="Add new todo" />
+            <button @click="addItem" >Add</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <h2>Todo</h2>
+            <ul class="list">
+              <li
+                :class="{completed: item.completed}"
+                class="list-item"
+                v-for="item in items"
+              >
+                <div
+                  class="list-item-toggle"
+                  @click="toggleComplete(item)"
+                ></div>
+                <span> {{ item.name }}</span>
+                <div class="list-item-delete" @click="removeItem(item)">X</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--
+      <h1>{{ message.split('').reverse().join('') }}</h1>
+      <button @click="count++">{{ count }}</button>-->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
